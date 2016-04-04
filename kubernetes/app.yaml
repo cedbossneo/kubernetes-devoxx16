@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: todo
+      name: todo-service
+    spec:
+      sessionAffinity: ClientIP
+      ports:
+        - port: 80
+          targetPort: 3000
+      type: LoadBalancer
+      selector:
+        app: todo
+  - apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      labels:
+        app: todo
+      name: todo-rc
+    spec:
+      replicas: 1
+      selector:
+        app: todo
+      template:
+        metadata:
+          labels:
+            app: todo
+        spec:
+          containers:
+          - image: cedbossneo/todomvc-redux-rethinkdb:latest
+            name: todo
+            imagePullPolicy: Always
+            env:
+            - name: REPLICAS
+              value: "3"
+            ports:
+            - containerPort: 3000
+              name: web
