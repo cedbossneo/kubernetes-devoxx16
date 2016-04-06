@@ -9,16 +9,10 @@ import _debug from 'debug'
 import config from '../config'
 import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
-import RethinkDB from './rethinkdb'
-import SocketIO from './socketio'
 
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
-
-// Enable rethinkdb
-RethinkDB.connect()
-SocketIO.setup(app)
 
 // Enable koa-proxy if it has been enabled in the config.
 if (config.proxy && config.proxy.enabled) {

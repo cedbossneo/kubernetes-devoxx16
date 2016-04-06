@@ -7,7 +7,6 @@ import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import rethinkdb from 'utils/rethinkdb'
 import moment from 'moment'
 
 injectTapEventPlugin()
@@ -37,8 +36,6 @@ moment.updateLocale('en', {
 const initialState = window.__INITIAL_STATE__
 const store = configureStore(initialState, browserHistory)
 const history = syncHistoryWithStore(browserHistory, store)
-
-rethinkdb.setupRealtime(store)
 
 // Now that we have the Redux store, we can create our routes. We provide
 // the store to the route definitions so that routes have access to it for
