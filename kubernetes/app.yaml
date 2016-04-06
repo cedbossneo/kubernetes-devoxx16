@@ -15,8 +15,8 @@ items:
       type: LoadBalancer
       selector:
         app: todo
-  - apiVersion: v1
-    kind: ReplicationController
+  - apiVersion: extensions/v1beta1
+    kind: Deployment
     metadata:
       labels:
         app: todo
@@ -24,7 +24,8 @@ items:
     spec:
       replicas: 1
       selector:
-        app: todo
+        matchLabels:
+          app: todo
       template:
         metadata:
           labels:
