@@ -17,8 +17,8 @@ items:
       type: LoadBalancer
       selector:
         app: todo
-  - apiVersion: v1
-    kind: ReplicationController
+  - apiVersion: extensions/v1beta1
+    kind: Deployment
     metadata:
       labels:
         app: todo
@@ -28,8 +28,8 @@ items:
     spec:
       replicas: 1
       selector:
-        app: todo
-        version: v1
+        matchLabels:
+          app: todo
       template:
         metadata:
           labels:
@@ -43,7 +43,7 @@ items:
             imagePullPolicy: Always
             env:
             - name: REPLICAS
-              value: "1"
+              value: "3"
             ports:
             - containerPort: 3000
               name: web
