@@ -3,8 +3,8 @@ import rethinkdb from 'rethinkdbdash'
 import Reconsider from 'reconsider'
 
 const RETHINKDB_CONN = {
-  host: process.env.RETHINKDB_DRIVER_SERVICE_HOST || 'rethinkdb',
-  port: process.env.RETHINKDB_DRIVER_SERVICE_PORT || 28015,
+  host: 'rethinkdb-driver',
+  port: 28015,
   db: 'todo'
 }
 
