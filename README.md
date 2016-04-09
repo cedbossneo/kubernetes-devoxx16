@@ -2,7 +2,8 @@
 
 # Run on docker
 
-docker run -p 80:3000 cedbossneo/todomvc-redux-rethinkdb:standalone
+kubectl run -p 80:3000 --image=cedbossneo/todomvc-redux-rethinkdb:standalone --name=todo
+kubectl expose rc todo --type=NodePort
 
 
 
