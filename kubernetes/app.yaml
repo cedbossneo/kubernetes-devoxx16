@@ -31,7 +31,7 @@ items:
             app: todo
         spec:
           containers:
-          - image: cedbossneo/todomvc-redux-rethinkdb:latest
+          - image: cedbossneo/todomvc-redux-rethinkdb:rethinkdb
             name: todo
             imagePullPolicy: Always
             env:
