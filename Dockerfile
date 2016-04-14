@@ -1,10 +1,10 @@
-FROM node:5
+FROM hypriot/rpi-node:5
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 ADD package.json .
-RUN PHANTOMJS_PLATFORM=linux PHANTOMJS_ARCH=x64 npm install
+RUN PHANTOMJS_PLATFORM=linux PHANTOMJS_ARCH=arm npm install
 ADD .babelrc .
 ADD bin bin
 ADD build build
