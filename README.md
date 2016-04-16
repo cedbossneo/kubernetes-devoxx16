@@ -2,8 +2,9 @@
 
 # Run on docker
 
-kubectl run -p 80:3000 --image=cedbossneo/todomvc-redux-rethinkdb:standalone --name=todo
-kubectl expose rc todo --type=NodePort
+kubectl run --image=cedbossneo/todomvc-redux-rethinkdb:standalone todo
+kubectl expose deployment todo --type=NodePort --port=80 --target-port=3000
 
-
-
+#  kubectl describe svc [SERVICE NODE PORT]
+#  kubectl describe node [NODE ID]
+#  kubectl expose deployment todo --type=LoadBalancer --port=80 --target-port=3000
