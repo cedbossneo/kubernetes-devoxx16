@@ -6,6 +6,7 @@ items:
     metadata:
       labels:
         app: todo
+        version: v1
         visualize: "true"
       name: todo-service
     spec:
@@ -21,18 +22,21 @@ items:
     metadata:
       labels:
         app: todo
+        version: v1
         visualize: "true"
       name: todo-rc
     spec:
-      replicas: 1
+      replicas: 3
       selector:
         matchLabels:
           app: todo
+          version: v1
       template:
         metadata:
           labels:
             visualize: "true"
             app: todo
+            version: v1
         spec:
           containers:
           - image: cedbossneo/todomvc-redux-rethinkdb:rethinkdb
