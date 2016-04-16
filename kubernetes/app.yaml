@@ -6,6 +6,7 @@ items:
     metadata:
       labels:
         app: todo
+        visualize: "true"
       name: todo-service
     spec:
       sessionAffinity: ClientIP
@@ -20,6 +21,7 @@ items:
     metadata:
       labels:
         app: todo
+        visualize: "true"
       name: todo-rc
     spec:
       replicas: 1
@@ -29,6 +31,7 @@ items:
       template:
         metadata:
           labels:
+            visualize: "true"
             app: todo
         spec:
           containers:

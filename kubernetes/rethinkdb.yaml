@@ -6,6 +6,7 @@ items:
     metadata:
       labels:
         db: rethinkdb
+        visualize: "true"
       name: rethinkdb-driver
     spec:
       ports:
@@ -18,6 +19,7 @@ items:
     metadata:
       labels:
         db: rethinkdb
+        visualize: "true"
       name: rethinkdb-rc
     spec:
       replicas: 1
@@ -29,6 +31,7 @@ items:
           labels:
             db: rethinkdb
             role: replicas
+            visualize: "true"
         spec:
           containers:
           - image: cedbossneo/rethinkdb-kubernetes:2.3
@@ -56,6 +59,7 @@ items:
     metadata:
       labels:
         db: rethinkdb
+        visualize: "true"
       name: rethinkdb-ui
     spec:
       sessionAffinity: ClientIP
