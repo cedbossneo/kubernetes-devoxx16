@@ -31,7 +31,7 @@ items:
             role: replicas
         spec:
           containers:
-          - image: cedbossneo/rethinkdb-kubernetes:latest
+          - image: cedbossneo/rethinkdb-kubernetes:2.3
             name: rethinkdb
             env:
             - name: POD_NAMESPACE
