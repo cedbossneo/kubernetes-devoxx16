@@ -22,4 +22,4 @@ Open http://localhost:3000
 
 
 
-
+## kubectl get pods -l="app=todo"
