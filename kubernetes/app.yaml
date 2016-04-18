@@ -30,6 +30,7 @@ items:
       selector:
         matchLabels:
           app: todo
+          version: v1
       template:
         metadata:
           labels:
