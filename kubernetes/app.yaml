@@ -6,6 +6,8 @@ items:
     metadata:
       labels:
         app: todo
+        version: v1
+        visualize: "true"
       name: todo-service
     spec:
       sessionAffinity: ClientIP
@@ -20,15 +22,20 @@ items:
     metadata:
       labels:
         app: todo
+        version: v1
+        visualize: "true"
       name: todo-rc
     spec:
       replicas: 1
       selector:
         app: todo
+        version: v1
       template:
         metadata:
           labels:
+            visualize: "true"
             app: todo
+            version: v1
         spec:
           containers:
           - image: cedbossneo/todomvc-redux-rethinkdb:rethinkdb
