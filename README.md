@@ -5,6 +5,7 @@
 gcloud container clusters create cluster-todo --zone=europe-west1-b
 
 kubectl create -f kubernetes/rethinkdb.yaml
+kubectl scale rc rethinkdb-rc --replicas=4
 
 Then:
 
