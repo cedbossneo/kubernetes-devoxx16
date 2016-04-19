@@ -30,6 +30,9 @@ export class RethinkDB {
     return this.init().then(() => r.connect(RETHINKDB_CONN)).then((connection) => {
       this.connection = connection
       console.log('RethinkDB connected')
+    }).error((err, conn) => {
+      console.log('RethinkDB connection error', err)
+      conn.reconnect()
     })
   }
 
