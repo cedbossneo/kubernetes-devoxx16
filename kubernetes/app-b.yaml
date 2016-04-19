@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: todo
+    version: v2
+    visualize: "true"
+  name: todo-rc-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo
+      version: v2
+  template:
+    metadata:
+      labels:
+        visualize: "true"
+        app: todo
+        version: v2
+    spec:
+      containers:
+      - image: cedbossneo/todomvc-redux-rethinkdb:rethinkdb-b
+        name: todo
+        imagePullPolicy: Always
+        env:
+        - name: REPLICAS
+          value: "3"
+        ports:
+        - containerPort: 3000
+          name: web
