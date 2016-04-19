@@ -1,7 +1,8 @@
 import React from 'react'
-import ListItem from 'material-ui/lib/lists/list-item'
-import TextField from 'material-ui/lib/text-field'
-import TimePicker from 'material-ui/lib/time-picker'
+import ListItem from 'material-ui/List/ListItem'
+import TextField from 'material-ui/TextField'
+import TimePicker from 'material-ui/TimePicker'
+import FlatButton from 'material-ui/FlatButton'
 
 type Props = {
   onAddTask: React.PropTypes.func
@@ -11,23 +12,32 @@ export class NewTask extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = {newTaskDate: new Date()}
+    this.state = {newTaskDate: new Date(), newTaskText: ''}
   }
 
   render () {
     return (<ListItem>
-      <TextField id='newTask' style={{width: '90%'}} onKeyDown={this.handleAddTask}/>
+      <TextField id='newTask' style={{width: '80%'}} onChange={this.handleTextChange} onKeyDown={this.handleKeyDown} value={this.state.newTaskText}/>
       <TimePicker onChange={this.handleDateChange} style={{display: 'inline-block', width: '10%'}} textFieldStyle={{width: '100%'}}
         value={this.state.newTaskDate}
         format='24hr'
       />
+      <FlatButton onTouchTap={this.handleAddTask} label='Add' style={{width: '10%', display: 'inline-block'}} primary/>
     </ListItem>)
   }
 
-  handleAddTask = (e) => {
+  handleAddTask = () => {
+    this.props.onAddTask({name: this.state.newTaskText, date: this.state.newTaskDate.getTime()})
+    this.setState({newTaskText: ''})
+  }
+
+  handleTextChange = (e) => {
+    this.setState({newTaskText: e.target.value})
+  }
+
+  handleKeyDown = (e) => {
     if (e.keyCode === 13) {
-      this.props.onAddTask({name: e.target.value, date: this.state.newTaskDate.getTime()})
-      e.target.value = ''
+      this.handleAddTask()
     }
   }
 
