@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import '../../styles/core.scss'
-import AppBar from 'material-ui/lib/app-bar'
+import AppBar from 'material-ui/AppBar'
 
 export class CoreLayout extends React.Component {
   static propTypes = {
