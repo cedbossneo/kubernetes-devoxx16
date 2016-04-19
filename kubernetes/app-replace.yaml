@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: todo
+        version: v1
+        visualize: "true"
+      name: todo-service
+    spec:
+      sessionAffinity: ClientIP
+      ports:
+        - port: 80
+          targetPort: 3000
+      type: LoadBalancer
+      selector:
+        app: todo
+        version: v1
+  - apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      labels:
+        app: todo
+        version: v1
+        visualize: "true"
+      name: todo-rc
+    spec:
+      replicas: 1
+      strategy: Recreate
+      selector:
+        matchLabels:
+          app: todo
+          version: v1
+      template:
+        metadata:
+          labels:
+            visualize: "true"
+            app: todo
+            version: v1
+        spec:
+          containers:
+          - image: cedbossneo/todomvc-redux-rethinkdb:rethinkdb
+            name: todo
+            imagePullPolicy: Always
+            env:
+            - name: REPLICAS
+              value: "3"
+            ports:
+            - containerPort: 3000
+              name: web
