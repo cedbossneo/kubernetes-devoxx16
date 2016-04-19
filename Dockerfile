@@ -11,7 +11,6 @@ ADD build build
 ADD config config
 ADD dist dist
 ADD constants constants
-ADD migrations migrations
 ADD server server
 
 ENV NODE_ENV production
