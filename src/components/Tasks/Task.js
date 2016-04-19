@@ -1,7 +1,7 @@
 import React from 'react'
-import ActionDelete from 'material-ui/lib/svg-icons/action/delete'
-import IconButton from 'material-ui/lib/icon-button'
-import ListItem from 'material-ui/lib/lists/list-item'
+import ActionDelete from 'material-ui/svg-icons/action/delete'
+import IconButton from 'material-ui/IconButton'
+import ListItem from 'material-ui/List/ListItem'
 import Time from 'react-time'
 
 type Props = {

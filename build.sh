@@ -3,5 +3,6 @@ set -e
 npm run lint
 npm run flow:check
 NODE_ENV=production npm run deploy
-docker build -t cedbossneo/todomvc-redux-rethinkdb:rethinkdb .
-docker push cedbossneo/todomvc-redux-rethinkdb:rethinkdb
+BRANCH=$1
+docker build -t cedbossneo/todomvc-redux-rethinkdb:${BRANCH:=rethinkdb} .
+docker push cedbossneo/todomvc-redux-rethinkdb:${BRANCH:=rethinkdb}
