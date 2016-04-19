@@ -17,7 +17,13 @@ const paths = config.utils_paths
 const app = new Koa()
 
 // Enable rethinkdb
-RethinkDB.connect()
+// Server Components
+function rethinkConnect () {
+  RethinkDB.connect().catch(() => {
+    setTimeout(rethinkConnect, 10000)
+  })
+}
+rethinkConnect()
 SocketIO.setup(app)
 
 // Enable koa-proxy if it has been enabled in the config.
